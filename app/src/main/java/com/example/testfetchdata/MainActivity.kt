@@ -1,5 +1,6 @@
 package com.example.testfetchdata
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -32,8 +33,7 @@ class MainActivity : AppCompatActivity() {
                     //methods inside PostAdapter class are being called at creation (onCreateViewHolder)
                     //see PostAdapter.kt
                     if (posts != null) {
-                        postAdapter = PostAdapter(posts)
-                        recyclerView.adapter = postAdapter
+                        setupRecyclerView(posts)
                     }
                 }
             }
@@ -42,6 +42,27 @@ class MainActivity : AppCompatActivity() {
                 // Handle failure here
             }
         })
-
     }
+
+
+    //ToDo: here goes the code for clicking on a post item that sends the user to the details page
+
+
+    //function that updates recyclerView to be able with the functionality of clicking on the posts
+    private fun setupRecyclerView(posts: List<PostDataModel>) {
+        postAdapter = PostAdapter(posts) { post ->
+            openPostDetailsActivity(post)
+        }
+        recyclerView.adapter = postAdapter
+    }
+
+    //function that sends to another activity
+    private fun openPostDetailsActivity(post: PostDataModel){
+        val intent = Intent(this, PostDetailsActivity::class.java)
+        intent.putExtra("POST_TITLE", post.title)
+        intent.putExtra("POST_BODY", post.body)
+        startActivity(intent)
+    }
+
+
 }

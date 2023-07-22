@@ -7,7 +7,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 //receives as argument the posts and extends the RecyclerView Adapter class
-class PostAdapter(private val posts: List<PostDataModel>) : RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
+//also receives onItemClick (lambda function that takes a PostDataModel object as arg and has return type of Unity)
+class PostAdapter(private val posts: List<PostDataModel>,private val onItemClick: (PostDataModel) -> Unit) : RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
 
     //creates a ViewHolder. the ViewHolder represents a single item view in the RecyclerView and holds references to the views within that item layout
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
@@ -22,6 +23,13 @@ class PostAdapter(private val posts: List<PostDataModel>) : RecyclerView.Adapter
         val post = posts[position]
         //PostViewHolder's bind function gives the data to the texts
         holder.bind(post)
+
+
+        // Set click listener on the item view
+        holder.itemView.setOnClickListener {
+            onItemClick(post)
+        }
+
     }
 
     //gets how many items are in the list
