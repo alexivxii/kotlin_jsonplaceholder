@@ -13,4 +13,13 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <!-- Theme for PostDetailsActivity using a Toolbar -->
+    <style name="Theme.Testfetchdata.PostDetails" parent="Theme.Testfetchdata">
+        <!-- Disable the ActionBar -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <!-- Add Toolbar title style if needed -->
+        <!-- <item name="android:actionBarStyle">@style/Widget.AppCompat.Toolbar.ActionBar</item> -->
+    </style>
 </resources>
