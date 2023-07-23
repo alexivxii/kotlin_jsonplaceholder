@@ -61,6 +61,7 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(this, PostDetailsActivity::class.java)
         intent.putExtra("POST_TITLE", post.title)
         intent.putExtra("POST_BODY", post.body)
+        intent.putExtra("POST_ID", post.id)
         startActivity(intent)
     }
 

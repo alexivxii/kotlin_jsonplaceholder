@@ -5,5 +5,6 @@ data class PostDataModel (
     val id: Int,
     val userId: Int,
     val title: String,
-    val body: String
+    val body: String,
+    val postId: Int
 )
